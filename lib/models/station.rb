@@ -16,6 +16,11 @@ class Station < ActiveRecord::Base
       # end
     end
 
+  # def reviews_by_stations
+  #   puts "which station would you like see reviews for?".colorize(:yellow)
+  #
+  #   Station.all.select(|i|i.)
+  end
 
 
 end
