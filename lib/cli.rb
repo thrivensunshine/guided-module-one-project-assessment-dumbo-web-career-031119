@@ -107,15 +107,19 @@
 class CommandLineInterface
 
   def greet
+
     puts "hey yo, hows it hangin?".colorize(:yellow)
     puts "welcome to the station rater".colorize(:yellow)
     puts "this is the spot yous guys can rate".colorize(:yellow)
     puts "and comment on the beee-utiful stations".colorize(:yellow)
     puts "here in New York City".colorize(:yellow)
+
   end
 
 def prompt_for_user_name
-  puts "First of all- lets get to know eachother- whats yah name?".colorize(:yellow)
+  puts "
+  First of all- lets get to know eachother-
+   whats yah name?".colorize(:yellow)
 end
 
 def user_make_or_find(u_name)
@@ -128,17 +132,20 @@ end
 
 
  def list_stations_prompt
+
    puts "ah right, how you gonna review a station if you dont know the station?".colorize(:yellow)
    puts "we've got a lot here, so why dont you tell me the first number or letter ".colorize(:yellow)
    puts "of the station and I'll give yah a list based on that".colorize(:yellow)
  end
 
 
+
  def options
-   puts "TYPE 1 to:".colorize(:white)+" See A Lits Of Stations".colorize(:blue)
-   puts "TYPE 2 to:".colorize(:white)+" Review A Station".colorize(:blue)
-   puts "TYPE 3 to".colorize(:white)+" View Your Reviews".colorize(:blue)
-   puts "TYPE 4 to".colorize(:white)+" Change or Delete Your Review".colorize(:blue)
+   puts "TYPE 1 ".colorize(:white)+"to: See A Lits Of Stations".colorize(:blue)
+   puts "TYPE 2 ".colorize(:white)+"to: Review A Station".colorize(:blue)
+   puts "TYPE 3 ".colorize(:white)+"to: View Your Reviews".colorize(:blue)
+   puts "TYPE 4 ".colorize(:white)+ "to: update or change your reviews".colorize(:blue)
+   puts "TYPE 5 ".colorize(:white)+"to: Delete Your Review".colorize(:blue)
    user_choice = gets.chomp.to_i
    # binding.pry
      case user_choice
@@ -151,14 +158,26 @@ end
 
      when 2
        Review.create_one(@current_user)
-       puts "Nicely done"
+
+       puts "Nicely done".colorize(:yellow)
        options
      when 3
        @current_user.get_user_review
        options
 
      when 4
-       @current_user.update
+       Review.update_review
+       options
+
+     when 5
+       Review.delete_review
+       options
+
+     else
+       puts "Come on guy, you see the instructions".colorize(:yellow)
+       puts "Just type the number all nice like, alright?".colorize(:yellow)
+       puts "no spaces no symbols, just the number".colorize(:yellow)
+       options
 
      end
 
@@ -175,11 +194,12 @@ def run
 greet
 prompt_for_user_name
 # seperate the make and create later to ensure people with the same name dont share reviews. for now MVP find_create will do
+
 user_make_or_find(u_name = gets.chomp)
 options_prompt
 options
 puts @current_user.name.colorize(:red)
-binding.pry
+
 end
 
 end

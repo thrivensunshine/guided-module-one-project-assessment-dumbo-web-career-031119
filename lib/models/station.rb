@@ -8,6 +8,7 @@ class Station < ActiveRecord::Base
     self.all.select do |station|
       if station.name[0] == station_start
         puts "#{station.id} #{station.name}"
+        puts "#{}"
       end
     end
       # if station.name[0] != station_start
