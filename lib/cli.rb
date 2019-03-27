@@ -137,30 +137,33 @@ end
  def options
    puts "TYPE 1 to:".colorize(:white)+" See A Lits Of Stations".colorize(:blue)
    puts "TYPE 2 to:".colorize(:white)+" Review A Station".colorize(:blue)
-   puts "TYPE 3 to:".colorize(:white)+" Leave a Suggestion".colorize(:blue)
-   puts "TYPE 4 to".colorize(:white)+" View Your Reviews".colorize(:blue)
-   puts "TYPE 5 to".colorize(:white)+" Change or Delete Your Review".colorize(:blue)
+   puts "TYPE 3 to".colorize(:white)+" View Your Reviews".colorize(:blue)
+   puts "TYPE 4 to".colorize(:white)+" Change or Delete Your Review".colorize(:blue)
    user_choice = gets.chomp.to_i
    # binding.pry
      case user_choice
      when 1
        list_stations_prompt
-       Station.list_stations
+       station_start = gets.chomp.upcase
+       Station.list_stations(station_start)
+
+       options
 
      when 2
        Review.create_one(@current_user)
-       # puts "type the station number"
-       # which_stat = gets.chomp.to_i
-       # this_stat = Station.find(which_stat)
-       # puts "rate the station with a number 1 through 5"
-       # rate_num = gets.chomp.to_i
-       # puts "leave a comment! but save your suggestion!"
-       # thought = gets.chomp
-       # puts "Noooow you can give your suggestion"
-       # suggest = gets.chomp
-       # Review.create(user_id: @current_user.id, station_id:this_stat.id, comment: thought,suggestion:suggest)
-       #
+       puts "Nicely done"
+       options
+     when 3
+       @current_user.get_user_review
+       options
+
+     when 4
+       @current_user.update
+
      end
+
+
+
 end
 
 
