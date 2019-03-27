@@ -108,7 +108,7 @@ class CommandLineInterface
   def image
     system "clear"
 puts"
-          
+
             ▓▓██████████▀──▄████████████████▄──▀██████████▓▓
             ▓▓█████████──▄███████▒▒▒▒▒████████▄──█████████▓▓
             ▓▓█████████─███▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀███─█████████▓▓
@@ -158,9 +158,11 @@ end
 
  def list_stations_prompt
 
-   puts "ah right, how you gonna review a station if you dont know the station?".colorize(:yellow)
-   puts "we've got a lot here, so why dont you tell me the first number or letter ".colorize(:yellow)
+   puts "ah right, how you gonna review a station if you dont know the station id?".colorize(:yellow)
+   puts "we've got a lot here, so why dont you tell me what the name starts with?".colorize(:yellow)
    puts "of the station and I'll give yah a list based on that".colorize(:yellow)
+   puts ""
+   puts "if yah dont see nuthin, it means it either dont exist or we aint got it"
  end
 
 
@@ -176,7 +178,7 @@ end
      case user_choice
      when 1
        list_stations_prompt
-       station_start = gets.chomp.upcase
+       station_start = gets.chomp.downcase
        Station.list_stations(station_start)
 
        options
