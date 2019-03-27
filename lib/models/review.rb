@@ -24,7 +24,7 @@ def self.create_one(user_instance)
 end
 
 def self.update_review
-          puts "(▀̿Ĺ̯▀̿ ̿)".colorize(:yellow)
+
   puts "Alright- now, remember that review numbah?".colorize(:yellow)
   puts "enter it here so's I can pull it up for yah".colorize(:yellow)
   change_this = gets.chomp.to_i
@@ -45,11 +45,11 @@ def self.update_review
   when 2
     puts "Whatcha wanna say instead?".colorize(:yellow)
     new_comment = gets.chomp.to_i
-    Review.update(change_this, rating: new_comment)
+    Review.update(change_this, comment: new_comment)
   when 3
     puts "Got a better suggestion?".colorize(:yellow)
     new_suggest = gets.chomp.to_i
-    Review.update(change_this, rating: new_suggest)
+    Review.update(change_this, suggestion: new_suggest)
 end
 end
 
