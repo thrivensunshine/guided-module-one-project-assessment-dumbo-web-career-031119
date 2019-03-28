@@ -7,12 +7,12 @@ class Station < ActiveRecord::Base
 
     station_search = "#{station_search}%"
     Station.all.where('name LIKE ?', station_search).map do |i|
-      puts "------"
-      puts "Station id: #{i.id}"
+      puts "---------"
+      puts "Station Number: #{i.id}"
       puts "Station Name #{i.name}, lines at this staion #{i.line}"
-      puts "------"
+      puts "---------"
     end
-     
+
   end
 
 
@@ -29,11 +29,20 @@ class Station < ActiveRecord::Base
   #     # end
   #   end
 
-  # def reviews_by_stations
-  #   puts "which station would you like see reviews for?".colorize(:yellow)
-  #
-  #   Station.all.select(|i|i.)
-  # end
+  def self.reviews_by_stations
+    puts "which station would you like see reviews for? just type
+    the station id".colorize(:yellow)
+    by_station = gets.chomp.to_i
+    Review.all.select do |reviews|
+      reviews.station_id == by_station
+      puts "#{reviews.user.name} rated #{reviews.rating} and said
+      #{reviews.comment}"
+      # reviews.station_id == self.station_id
+      # puts reviews
+      # binding.pry
+    end
+
+  end
 
 
 end

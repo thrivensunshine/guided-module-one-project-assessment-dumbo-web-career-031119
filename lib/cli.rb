@@ -139,6 +139,7 @@ end
     puts "and comment on the beee-utiful stations".colorize(:yellow)
     puts "here in New York City".colorize(:yellow)
 
+
   end
 
 def prompt_for_user_name
@@ -153,16 +154,21 @@ end
 
  def options_prompt
    puts "Ok #{@current_user.name}, whatcha wanna do?".colorize(:yellow)
+   puts ""
+   puts "I HIGHLY suggest going through 1 through 5 to get a feel
+   and get the numbers you'll need through out the program-
+   it wouldn't be NYC if you didnt have to do a little leg work eh?".colorize(:light_yellow)
  end
 
 
  def list_stations_prompt
 
    puts "ah right, how you gonna review a station if you dont know the station id?".colorize(:yellow)
-   puts "we've got a lot here, so why dont you tell me what the name starts with?".colorize(:yellow)
+   puts "we've got a lot here, so why dont you tell me what the name starts with?, you can test it with it 'ca' or somethin if yahd like".colorize(:yellow)
    puts "of the station and I'll give yah a list based on that".colorize(:yellow)
    puts ""
-   puts "if yah dont see nuthin, it means it either dont exist or we aint got it"
+   puts "if yah dont see nuthin, it means it either dont exist or we aint got it".colorize(:yellow)
+   puts "its fine tho, just try again".colorize(:yellow)
  end
 
 
@@ -187,6 +193,7 @@ end
        Review.create_one(@current_user)
 
        puts "Nicely done".colorize(:yellow)
+
        options
      when 3
        @current_user.get_user_review
@@ -200,6 +207,9 @@ end
        Review.delete_review
        options
 
+     when 6
+       Station.reviews_by_stations
+       options
      else
        puts "Come on guy, you see the instructions".colorize(:yellow)
        puts "Just type the number all nice like, alright?".colorize(:yellow)
