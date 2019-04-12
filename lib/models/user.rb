@@ -1,24 +1,34 @@
-
+require'pry'
 class User < ActiveRecord::Base
   has_many :reviews
   has_many :stations, through: :reviews
 
 
   def get_user_review
- # for some reason I had to put the if statement- i couldnt get an array returned even though in binding pry I was able to see each one. I will come back to refactor if i get a moment
-  Review.all.select do|i|
-     if i.user_id === self.id
-       
+    puts "remeber the review number if you wanna change or delete it".colorize(:yellow)
+     self.reviews.each do |i|
+         # binding.pry
       puts "-----------------------------"
-      puts"Review ##{i.id} ".colorize(:pink)
+      puts"Review Number #{i.id} ".colorize(:pink)
       puts " STATION: #{i.station.name} ".colorize(:pink)
       puts" RATING: #{i.rating}".colorize(:pink)
       puts" COMMENT: #{i.comment}".colorize(:pink)
       puts" SUGGESTION #{i.suggestion}"
       puts "----------------------------- "
 
-      end
     end
   end
+
+  def get_user_testing
+    self.reviews.map do |i|
+
+      i.rating
+      # binding.pry
+    
+    end
+  end
+  # ---------
+
+
 
 end

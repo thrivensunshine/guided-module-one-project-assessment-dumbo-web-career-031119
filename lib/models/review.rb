@@ -27,10 +27,10 @@ def self.update_review
   puts "Alright- now, remember that review number?".colorize(:yellow)
   puts "enter it here so's I can pull it up for yah".colorize(:yellow)
   change_this = gets.chomp.to_i
-  if Review.find_by(id:change_this) == nil
-    puts "ah man I dont see that one- check your review number again".colorize(:yellow)
-
-  else
+  # if Review.find_by(id:change_this) == nil
+  #   puts "ah man I dont see that one- check your review number again".colorize(:yellow)
+  #
+  # else
   puts" ah, here it is!".colorize(:yellow)
   # insert the rating
 
@@ -57,7 +57,7 @@ def self.update_review
     puts "either im crazy or you entered something wrong, back to the top!".colorize(:yellow)
     CommandLineInterface.options
   end
-end
+
 end
 
 def self.delete_review

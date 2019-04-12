@@ -1,4 +1,5 @@
 
+require'pry'
 class Station < ActiveRecord::Base
   has_many :reviews
   has_many :users, through: :reviews
@@ -8,10 +9,12 @@ class Station < ActiveRecord::Base
     station_search = "#{station_search}%"
     Station.all.where('name LIKE ?', station_search).map do |i|
       puts "---------"
-      puts "Station Number: #{i.id}"
+      puts "Station ID Number: #{i.id}"
       puts "Station Name #{i.name}, lines at this staion #{i.line}"
       puts "---------"
     end
+
+
 
   end
 
@@ -35,14 +38,42 @@ class Station < ActiveRecord::Base
     by_station = gets.chomp.to_i
     Review.all.select do |reviews|
       reviews.station_id == by_station
-      puts "#{reviews.user.name} rated #{reviews.rating} and said
-      #{reviews.comment}"
-      # reviews.station_id == self.station_id
-      # puts reviews
-      # binding.pry
+      puts "--------------------------------------"
+      puts "#{reviews.user.name} gave a #{reviews.rating}
+      rating and said: #{reviews.comment}
+      and sugessted: #{reviews.suggestion}".colorize(:light_magenta)
+      puts "--------------------------------------"
     end
 
   end
 
+  # def self.array_of_station_rating(id_search)
+  #
+  #   av_by_this_station = Station.find(id_search)
+  #   av_by_this_station.reviews.map {|i|i.rating}
+  #   end
+  def self.array_of_station_rating
+    arr = []
+    puts "i can give yah an average too if you want".colorize(:yellow)
+    puts "whats that station id number again?"
+    by_station = gets.chomp.to_i
+    av_by_this_station = Station.find(by_station)
+    arr = av_by_this_station.reviews.map {|i|i.rating}
+    # arr << i.rating
+    arr_rate = arr.reduce(:+)/ arr.size
+    puts "#{av_by_this_station.name} station has #{arr.size} ratings".colorize(:light_magenta)
+    puts "#{av_by_this_station.name} has an average rate of #{arr_rate}".colorize(:light_magenta)
+  end
+
+
+
+
+  # ---------
 
 end
+
+
+
+# puts "i can give yah an average too if you want".colorize(:yellow)
+# puts "whats that station id number again?"
+# by_station = gets.chomp.to_i

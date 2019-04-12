@@ -2,9 +2,9 @@ User.destroy_all
 Station.destroy_all
 Review.destroy_all
 
-sally= User.create(name:"sally")
-jim= User.create(name:"Jim")
-bob= User.create(name:"bob")
+User.create(name:"sally")
+User.create(name:"Jim")
+User.create(name:"bob")
 
 Station.create(name:"herald square",line: "a-c-e")
 Station.create(name:"times square", line:"1-2-3")

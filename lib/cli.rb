@@ -179,6 +179,8 @@ end
    puts "TYPE 3 ".colorize(:white)+"to: View Your Reviews".colorize(:blue)
    puts "TYPE 4 ".colorize(:white)+ "to: update or change your reviews".colorize(:blue)
    puts "TYPE 5 ".colorize(:white)+"to: Delete Your Review".colorize(:blue)
+   puts "TYPE 6 ".colorize(:white)+"to: See ratings by station".colorize(:light_blue)
+   puts "TYPE 7 ".colorize(:white)+"to: See average ratings by station".colorize(:light_blue)
    user_choice = gets.chomp.to_i
    # binding.pry
      case user_choice
@@ -210,6 +212,16 @@ end
      when 6
        Station.reviews_by_stations
        options
+
+     when 7
+       puts "im workin on it guy".colorize(:yellow)
+       Station.array_of_station_rating
+       options
+
+     when 8
+       puts "just checking"
+       @current_user.get_user_testing
+
      else
        puts "Come on guy, you see the instructions".colorize(:yellow)
        puts "Just type the number all nice like, alright?".colorize(:yellow)
